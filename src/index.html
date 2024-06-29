@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drug Interaction Application</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Drug Interaction Application</h1>
+  </header>
+  
+  <main>
+    <section id="main-page">
+ 
+      <div class="info-source">
+         <h2>explain where you got the information from</h2>
+      </div>
+     
+      <div id="explanation" style="display: none;">
+        <p>The information was sourced from reputable medical databases and verified by healthcare professionals.</p>
+      </div>
+    </section>
+    
+    <section id="application">
+      <h2>Application</h2>
+      <form id="drug-form">
+        <label for="drug-name">Drug Name:</label>
+        <input type="text" id="drug-name" name="drug-name" required>
+        
+        <label for="drug-amount">Amount Taken:</label>
+        <input type="number" id="drug-amount" name="drug-amount" required>
+        
+        <label for="time-taken">Time Taken (hours ago):</label>
+        <input type="number" id="time-taken" name="time-taken" required>
+        
+        <label for="plan-to-take">Amount Planning to Take:</label>
+        <input type="number" id="plan-to-take" name="plan-to-take" required>
+        
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+  </main>
+  
+  
+</body>
+</html>
