@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+    <title>Drug Information API</title>
+    <style>
+        body {
+            background-color: black;
+            color: orange;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #222;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            text-align: center;
+            color: #FFA500;
+        }
+        p {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #FFA500;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #FFA500;
+            color: black;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #ffb732;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Drug Information API</h1>
+        <p>Enter drug names separated by commas:</p>
+        <form action="/drugs" method="post">
+            <input type="text" name="drug_names" placeholder="aspirin, ibuprofen, paracetamol">
+            <input type="submit" value="Get Drug Information">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+    <title>Drug Information Results</title>
+    <style>
+        body {
+            background-color: black;
+            color: orange;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #222;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            text-align: center;
+            color: #FFA500;
+        }
+        .result {
+            margin-top: 20px;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+        .drug-info, .side-effects {
+            margin-bottom: 20px;
+        }
+        .drug-info h2, .side-effects h2 {
+            color: #FFA500;
+        }
+        .drug-info p, .side-effects p {
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-wrap: break-word;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Drug Information Results</h1>
+        <div class="result">
+            <div class="drug-info">
+                <h2>Drug Information</h2>
+                {% for drug in drug_info %}
+                    {% for name, info in drug.items() %}
+                        <p><strong>{{ name }}</strong></p>
+                        <p>Official Name: {{ info.official_name }}</p>
+                        <p>Generic Name: {{ info.generic_name }}</p>
+                        <p>Safe Usage: {{ info.safe_usage }}</p>
+                        <p>Dosage Form: {{ info.dosage_form }}</p>
+                        <p>Route: {{ info.route }}</p>
+                        <p>Substance Name: {{ info.substance_name }}</p>
+                        <p>Side Effects: {{ info.side_effects }}</p>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+            <div class="side-effects">
+                <h2>Potential Side Effects</h2>
+                {% if side_effects %}
+                    <ul>
+                        {% for effect in side_effects %}
+                            <li>{{ effect }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>None</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
