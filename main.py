@@ -19,8 +19,17 @@ app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 DATABASE_URL = os.getenv('DATABASE_URL')
 SECRET_KEY = os.getenv('SECRET_KEY')
 
+def initialize_services():
+    # This could be a nice place to initialize things
+
+
 # Simulated database for drug information
+# TO-DO #1: You need a database locally running: watch this tutorial - https://www.youtube.com/watch?v=BLH3s5eTL4Y 
+# TO-DO: Initialize a database and replace this object with it
 drug_database = {}
+# Hook in with a database driver (postgres) there are different libraries to access postgres through code.
+# Probably should use this package https://www.freecodecamp.org/news/postgresql-in-python/
+
 
 @app.route('/')
 def home():
@@ -47,6 +56,14 @@ def get_drug_info():
     
     for drug_name in drug_names:
         drug_name = drug_name.strip()
+        # Instead of the below line, you want to query the database using the python postgresql client package: 
+        # rows = cursor.execute("SELECT * FROM DB_table WHERE name = $1;")
+        # if len(rows) > 0:
+            # just return the first record
+        # else:
+            # go make API call to the drug API
+            # and then save that record in the database
+            # https://www.w3schools.com/postgresql/postgresql_insert_into.php
         if drug_name in drug_database:
             info = drug_database[drug_name]
         else:
@@ -112,5 +129,13 @@ def internal_server_error(e):
     logger.error("Internal server error")
     return jsonify({"error": "Internal server error"}), 500
 
+# TO-DO: main.py should never be larger than 50-100 lines of code. For what you're doing it should be like 20 lines. 
+# Reason for this is bc you want it to be easy for other developers to understand the entrypoint of your app.
 if __name__ == '__main__':
+    initialize_services()
+
+    
     app.run(debug=True)
+
+# TO-DO: Separate your api endpoints into separate files and then import those files into where you want to use them. 
+
